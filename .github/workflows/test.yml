@@ -21,4 +21,5 @@ jobs:
           name: Web ${{ inputs.tag }}
           tag: ${{ inputs.tag }}
           generateReleaseNotes: true
+          commit: ${{ github.sha }}
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
