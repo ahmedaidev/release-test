@@ -1,0 +1,26 @@
+name: Web Dev V2
+
+on:
+  workflow_dispatch:
+    inputs:
+        tag:
+          type: string
+          required: true
+          description: Release Tag
+          default: v2.0.0
+
+env:
+  DOCKER_IMAGE: ${{ vars.DOCKER_REPOSITORY }}/frontend
+
+jobs:
+  deploy_to_dev:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Create a release
+        uses: ncipollo/release-action@v1
+        with:
+          name: Web ${{ inputs.tag }}
+          tag: ${{ inputs.tag }}
+          generateReleaseNotes: true
