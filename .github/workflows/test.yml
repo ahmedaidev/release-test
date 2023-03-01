@@ -31,10 +31,6 @@ jobs:
           generateReleaseNotes: true
           commit: ${{ github.sha }}
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      - name: Checkout to release branch
-        run: |
-          git checkout -b release
-          git push -u origin release
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
